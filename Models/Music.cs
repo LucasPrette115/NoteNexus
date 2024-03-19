@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 namespace NoteNexus.Models;
 
 
- public class Music
+ internal class Music
 {
     private string? _name;
     private string? _artist;

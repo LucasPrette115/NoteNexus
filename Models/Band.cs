@@ -1,22 +1,29 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace NoteNexus.Models;
 
-public class Band
+internal class Band
 {
     private List<Album> albums = new List<Album>();
 
-    private List<int> ratings = new List<int>();
+    private List<Ratings> ratingsList = new List<Ratings>();
     public string Name { get; set; }
     public List<Album> Albums { get { return albums; } set { albums = value; } }
 
-    public List<int> Ratings { get { return ratings; } set { ratings = value; } }
-
+    public double AverageRating
+    {
+        get
+        {
+            if (ratingsList.Count == 0) return 0;
+            else return ratingsList.Average(a => a.Rating);
+        }
+    }
 
 
     public Band() { }
@@ -35,9 +42,9 @@ public class Band
         Albums.Add(album);
     }
 
-    public void AddRating(int rate)
-    {
-        Ratings.Add(rate);
+    public void AddRating(Ratings rate)
+    { 
+        ratingsList.Add(rate);
     }
 
     public void DisplayAlbums()

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace NoteNexus.Models;
 
-public class Podcast
+internal class Podcast
 {
     private List<Episode> episodes = new List<Episode>();
     public string? Host { get; set; }

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace NoteNexus.Models;
 
-public class Album
+internal class Album
 {
     private List<Music> musics = new List<Music>();
     public string? Name { get; set; }

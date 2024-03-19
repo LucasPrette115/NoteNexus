@@ -2,7 +2,7 @@
 
 namespace NoteNexus.Models;
 
-public class Episode
+internal class Episode
 {
 
     private List<string> guests = new List<string>();
