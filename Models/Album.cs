@@ -30,7 +30,7 @@ internal class Album
         Console.WriteLine($"Total duration: {TotalDuration} minutes");
     }
 
-    public Album Parse(string text)
+    public static Album Parse(string text)
     {
         return new Album(text, new List<Music>());
 

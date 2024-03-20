@@ -10,7 +10,7 @@ internal class RegisterAlbumMenu : Menu
     {
         Console.Clear();
         DisplayTitle("Register a Album to a Band");
-        Console.Write("Wich band do you wanna register an album to?: ");
+        Console.Write("Which band do you wanna register an album to?: ");
         string bandName = Console.ReadLine()!;
         if (registeredBands.ContainsKey(bandName)) 
         {
