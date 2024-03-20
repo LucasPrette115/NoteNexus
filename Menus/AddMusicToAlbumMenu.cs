@@ -6,9 +6,10 @@ namespace NoteNexus.Menus;
 
 internal class AddMusicToAlbumMenu : Menu
 {
-    public void Execute(Dictionary<string, Band> registeredBands)
+    public override void Execute(Dictionary<string, Band> registeredBands)
     {
-        Console.Clear();
+        
+        base.Execute(registeredBands);
         DisplayTitle("Add music to an album");        
         if (registeredBands.Count != 0)
         {

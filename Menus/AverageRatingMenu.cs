@@ -3,9 +3,9 @@
 namespace NoteNexus.Menus;
 internal class AverageRatingMenu : Menu
 {
-    public void Execute(Dictionary<string, Band> registeredBands)   
+    public override void Execute(Dictionary<string, Band> registeredBands)   
     {
-        Console.Clear();
+        base.Execute(registeredBands);
         DisplayTitle("Average rating for every Band");
 
         foreach (var key in registeredBands)

@@ -7,10 +7,10 @@ namespace NoteNexus.Menus;
 internal class ListAllBandsMenu : Menu
 {
 
-    public void Execute(Dictionary<string, Band> registeredBands)
+    public override void Execute(Dictionary<string, Band> registeredBands)
     {
 
-        Console.Clear();
+        base.Execute(registeredBands);
         DisplayTitle("List of All Bands");
         foreach (var kvp in registeredBands)
         {

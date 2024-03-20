@@ -6,9 +6,9 @@ namespace NoteNexus.Menus;
 
 internal class RegisterAlbumMenu : Menu
 {
-    public void Execute(Dictionary<string, Band> registeredBands)
+    public override void Execute(Dictionary<string, Band> registeredBands)
     {
-        Console.Clear();
+        base.Execute(registeredBands);
         DisplayTitle("Register a Album to a Band");
         Console.Write("Which band do you wanna register an album to?: ");
         string bandName = Console.ReadLine()!;

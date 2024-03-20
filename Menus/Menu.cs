@@ -1,8 +1,11 @@
 ﻿
 
+using NoteNexus.Interfaces;
+using NoteNexus.Models;
+
 namespace NoteNexus.Menus;
 
-internal class Menu
+abstract internal class Menu
 {
     public static void DisplayTitle(string title)
     {
@@ -11,5 +14,10 @@ internal class Menu
         Console.WriteLine(characteres);
         Console.WriteLine(title);
         Console.WriteLine(characteres + "\n");
+    }
+
+    public virtual void Execute(Dictionary<string, Band> registeredBands)
+    {
+        Console.Clear();
     }
 }

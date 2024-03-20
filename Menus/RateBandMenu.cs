@@ -1,19 +1,15 @@
-﻿using NoteNexus.Models;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
+﻿
+using NoteNexus.Models;
 namespace NoteNexus.Menus;
+
 
 internal class RateBandMenu : Menu
 {
     
-    public void Execute(Dictionary<string, Band> registeredBands)
+    public override void Execute(Dictionary<string, Band> registeredBands)
     {
 
-        Console.Clear();
+        base.Execute(registeredBands);
         DisplayTitle("Rate a Band");
         Console.Write("Which band would you like to rate?: ");
         string bandName = Console.ReadLine()!;

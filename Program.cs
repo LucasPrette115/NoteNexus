@@ -8,6 +8,14 @@ internal class Program
     private static void Main(string[] args)
     {
         Dictionary<string, Band> registeredBands = new();
+        Dictionary<int, Menu> options = new();
+        options.Add(1, new RegisterBandMenu());
+        options.Add(2, new ListAllBandsMenu());
+        options.Add(3, new RateBandMenu());
+        options.Add(4, new AverageRatingMenu());
+        options.Add(5, new RegisterAlbumMenu());
+        options.Add(6, new ListAllAlbumsMenu());
+        options.Add(7, new AddMusicToAlbumMenu());     
         
         void DisplayLogo()
         {
@@ -39,41 +47,23 @@ internal class Program
                     Console.WriteLine("Type 7 to add a music to an album");
                     Console.WriteLine("Type -1 to exit");
                     Console.Write("\nSelect an item: ");
-                    switch (Convert.ToInt32(Console.ReadLine()))
+
+                    int userInput = int.Parse(Console.ReadLine()!);
+                    if (options.ContainsKey(userInput))
                     {
-                        case 1: RegisterBandMenu menu1 = new();
-                            menu1.Execute(registeredBands);
-                            DisplayMenu();
-                            break;
-                        case 2: ListAllBandsMenu menu2 = new();
-                            menu2.Execute(registeredBands);
-                            DisplayMenu();
-                            break;
-                        case 3: RateBandMenu menu3 = new RateBandMenu();
-                            menu3.Execute(registeredBands);
-                            DisplayMenu();
-                            
-                            break;
-                        case 4: AverageRatingMenu menu4 = new();
-                            menu4.Execute(registeredBands);
-                            DisplayMenu();
-                            break;
-                        case 5: RegisterAlbumMenu menu5 = new();
-                            menu5.Execute(registeredBands);
-                            DisplayMenu();
-                            break;
-                        case 6: ListAllAlbumsMenu menu6 = new();
-                            menu6.Execute(registeredBands);
-                            DisplayMenu();
-                            break;
-                        case 7: AddMusicToAlbumMenu menu7 = new();
-                            menu7.Execute(registeredBands);
-                            DisplayMenu();
-                            break;
+                        Menu menu = options[userInput];
+                        menu.Execute(registeredBands);
+                        if (userInput > 0) DisplayMenu();
                     }
+                    else
+                    {
+                        if (userInput == -1) break;
+                        throw new ArgumentOutOfRangeException();
+                    }
+
                     break;
 
-                }catch (Exception ex)
+                }catch (ArgumentOutOfRangeException ex)
                 {
                     Console.Clear();
                     Console.WriteLine($"Invalid input: {ex.Message}\n");
