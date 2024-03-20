@@ -10,15 +10,11 @@ internal class ListAllAlbumsMenu : Menu
     {
         Console.Clear();
         DisplayTitle("Displaying every album from a band");
-        Console.Write("From wich band you want to see their albums?: ");
+        Console.Write("Type in the name of the band: ");
         string bandName = Console.ReadLine()!;
         if (registeredBands.ContainsKey(bandName))
         {
-            
-            foreach (var kvp in registeredBands)
-            {
-                kvp.Value.DisplayAlbums();
-            }
+            registeredBands[bandName].DisplayAlbums();
             Console.WriteLine("\nPress any key to continue...");
             Console.ReadKey();
             Console.Clear();
