@@ -1,14 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.Diagnostics;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿
+
+using NoteNexus.Interfaces;
 
 namespace NoteNexus.Models;
 
-internal class Band
+internal class Band : IRateable
 {
     private List<Album> albums = new List<Album>();
 

@@ -4,7 +4,7 @@ namespace NoteNexus.Models;
 
 internal class Album
 {
-    public List<Music> musics = new List<Music>();
+    private List<Music> musics = new List<Music>();
     public string? Name { get; set; }
     public List<Music> Musics { get { return musics; } set { musics = value; } }
 
