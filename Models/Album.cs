@@ -1,16 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using NoteNexus.Menus;
 
 namespace NoteNexus.Models;
 
 internal class Album
 {
-    private List<Music> musics = new List<Music>();
+    public List<Music> musics = new List<Music>();
     public string? Name { get; set; }
-    public List<Music> Musics { get; set; }
+    public List<Music> Musics { get { return musics; } set { musics = value; } }
 
     public int TotalDuration => musics.Sum(m => m.Duration);
 
@@ -20,18 +16,23 @@ internal class Album
 
     public void AddMusic(Music music)
     {
-        musics.Add(music);
+        Musics.Add(music);
     }
 
     public void DisplayAlbum()
     {
-          
-        Console.WriteLine($"\nSongs from {Name}\n**************");
+        Menu.DisplayTitle($"\nSongs from {Name}");
         foreach (var music in musics)
         {
             music.DisplayMusic();
             Console.WriteLine("\n");
         }
         Console.WriteLine($"Total duration: {TotalDuration} minutes");
+    }
+
+    public Album Parse(string text)
+    {
+        return new Album(text, new List<Music>());
+
     }
 }

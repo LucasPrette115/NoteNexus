@@ -16,7 +16,7 @@ internal class ListAllBandsMenu : Menu
         {
             Console.WriteLine($"Band: {kvp.Key}");
         }
-        Console.WriteLine("Type any key to continue...");
+        Console.WriteLine("\nType any key to continue...");
         Console.ReadKey();
         Console.Clear();
         

@@ -39,7 +39,7 @@ internal class RegisterBandMenu : Menu
             catch (ArgumentException e)
             {
                 Console.WriteLine($"Invalid input | Expected y or n : {e.Message}");
-                Console.WriteLine("Press any key to continue...");
+                Console.WriteLine("\nPress any key to continue...");
                 Console.ReadKey();
                 Console.Clear();
                

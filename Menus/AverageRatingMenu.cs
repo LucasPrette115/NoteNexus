@@ -12,7 +12,7 @@ internal class AverageRatingMenu : Menu
         {
             Console.WriteLine($"{key.Value.Name} : {key.Value.AverageRating}");
         }
-        Console.WriteLine("Press any key to continue...");
+        Console.WriteLine("\nPress any key to continue...");
         Console.ReadKey();
         Console.Clear();
        

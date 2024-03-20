@@ -31,11 +31,14 @@ internal class Program
                 {
                     DisplayLogo();
                     Console.WriteLine("Type 1 to register a band");
-                    Console.WriteLine("Type 2 to  list all bands");
+                    Console.WriteLine("Type 2 to list all bands");
                     Console.WriteLine("Type 3 to rate a band");
                     Console.WriteLine("Type 4 to display the average rating of the bands");
+                    Console.WriteLine("Type 5 to register an album to a band");
+                    Console.WriteLine("Type 6 to list every album from a band");
+                    Console.WriteLine("Type 7 to add a music to an album");
                     Console.WriteLine("Type -1 to exit");
-                    Console.Write("Select an item: ");
+                    Console.Write("\nSelect an item: ");
                     switch (Convert.ToInt32(Console.ReadLine()))
                     {
                         case 1: RegisterBandMenu menu1 = new();
@@ -53,6 +56,18 @@ internal class Program
                             break;
                         case 4: AverageRatingMenu menu4 = new();
                             menu4.Execute(registeredBands);
+                            DisplayMenu();
+                            break;
+                        case 5: RegisterAlbumMenu menu5 = new();
+                            menu5.Execute(registeredBands);
+                            DisplayMenu();
+                            break;
+                        case 6: ListAllAlbumsMenu menu6 = new();
+                            menu6.Execute(registeredBands);
+                            DisplayMenu();
+                            break;
+                        case 7: AddMusicToAlbumMenu menu7 = new();
+                            menu7.Execute(registeredBands);
                             DisplayMenu();
                             break;
                     }
