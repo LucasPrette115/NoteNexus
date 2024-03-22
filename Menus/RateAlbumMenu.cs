@@ -4,10 +4,11 @@ using NoteNexus.Models;
 
 namespace NoteNexus.Menus;
 
-internal class AddMusicToAlbumMenu : Menu
+internal class RateAlbumMenu : Menu
 {
     public override void Execute(Dictionary<string, Band> registeredBands)
     {
+        
         do
         {
             try
@@ -18,7 +19,7 @@ internal class AddMusicToAlbumMenu : Menu
                 string bandName = Console.ReadLine()!;
                 if (registeredBands.ContainsKey(bandName))
                 {
-                    Console.Write("For which album would you like to add a music to?: ");
+                    Console.Write("Which album do you wanna rate?: ");
                     string albumName = Console.ReadLine()!;
                     bool albumFound = false;
                     for (int i = 0; i < registeredBands[bandName].Albums.Count; i++)
@@ -26,16 +27,14 @@ internal class AddMusicToAlbumMenu : Menu
                         if (registeredBands[bandName].Albums[i].Name == albumName)
                         {
                             albumFound = true;
-                            Console.Write("What's the name of the song?: ");
-                            string musicName = Console.ReadLine()!;
-                            Console.Write("How long is this song in minutes?: ");
-                            int duration = int.Parse(Console.ReadLine()!);                            
-                            registeredBands[bandName].Albums[i].AddMusic(new Music(musicName, bandName, duration, true));
-                            Console.WriteLine($"{musicName} registered successfully to {albumName}");
+                            Console.Write("Rate this album out of 10: ");
+                            Ratings rating = Ratings.Parse(Console.ReadLine()!);                            
+                            registeredBands[bandName].Albums[i].AddRating(rating);
+                            Console.WriteLine($"{rating.Rating} registered successfully to {albumName}");
                             Thread.Sleep(2000);
 
                         }
-                        
+
                     }
                     if (!albumFound)
                     {
@@ -53,15 +52,17 @@ internal class AddMusicToAlbumMenu : Menu
                 }
                 break;
             }
-            catch (FormatException ex) 
+            catch (ArgumentOutOfRangeException ex)
             {
                 Console.WriteLine($"Invalid input: {ex.Message}");
-
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Error: {ex.Message}");
             }
 
         } while (true);
-        
-        
-    }
+       
 
+    }
 }

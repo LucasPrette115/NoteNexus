@@ -49,7 +49,7 @@ internal class Band : IRateable
         foreach (Album album in albums)
         {
             Console.WriteLine($"Name: {album.Name}");
-            Console.WriteLine($"Total Duration: {album.TotalDuration} minutes");
+            Console.WriteLine($"Total Duration: {album.TotalDuration} minutes\n");
             album.DisplayAlbum();
         }
     }

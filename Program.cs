@@ -16,6 +16,7 @@ internal class Program
         options.Add(5, new RegisterAlbumMenu());
         options.Add(6, new ListAllAlbumsMenu());
         options.Add(7, new AddMusicToAlbumMenu());     
+        options.Add(8, new RateAlbumMenu());     
         
         void DisplayLogo()
         {
@@ -45,6 +46,7 @@ internal class Program
                     Console.WriteLine("Type 5 to register an album to a band");
                     Console.WriteLine("Type 6 to list every album from a band");
                     Console.WriteLine("Type 7 to add a music to an album");
+                    Console.WriteLine("Type 8 to rate an album");
                     Console.WriteLine("Type -1 to exit");
                     Console.Write("\nSelect an item: ");
 
@@ -69,6 +71,7 @@ internal class Program
                     Console.WriteLine($"Invalid input: {ex.Message}\n");
 
                 }
+                catch (Exception ex) { Console.Clear(); Console.WriteLine($"Invalid input: {ex.Message}"); }
             }while (true);
         }     
         DisplayMenu();
