@@ -10,7 +10,7 @@ internal class Band : IRateable
 
     private List<Ratings> ratingsList = new List<Ratings>();
     public string Name { get; set; }
-    public List<Album> Albums { get { return albums; } set { albums = value; } }
+    public List<Album> Albums => albums;
 
     public double AverageRating
     {
@@ -20,13 +20,13 @@ internal class Band : IRateable
             else return ratingsList.Average(a => a.Rating);
         }
     }
-
+    
 
     public Band() { }
 
     public Band(string name, List<Album> albums) 
     {
-        Albums = albums;
+        this.albums = albums;
         Name = name;
     
     }
@@ -35,7 +35,7 @@ internal class Band : IRateable
 
     public void AddAlbum(Album album)
     {
-        Albums.Add(album);
+        albums.Add(album);
     }
 
     public void AddRating(Ratings rate)
@@ -46,7 +46,7 @@ internal class Band : IRateable
     public void DisplayAlbums()
     {
         Console.WriteLine($"\nEvery album from {Name}");
-        foreach (Album album in albums)
+        foreach (Album album in Albums)
         {
             Console.WriteLine($"Name: {album.Name}");
             Console.WriteLine($"Total Duration: {album.TotalDuration} minutes\n");

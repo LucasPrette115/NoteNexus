@@ -21,21 +21,20 @@ internal class RateAlbumMenu : Menu
                 {
                     Console.Write("Which album do you wanna rate?: ");
                     string albumName = Console.ReadLine()!;
-                    bool albumFound = false;
-                    for (int i = 0; i < registeredBands[bandName].Albums.Count; i++)
-                    {
-                        if (registeredBands[bandName].Albums[i].Name == albumName)
+                    bool albumFound = false;                  
+                    
+                        if (registeredBands[bandName].Albums.Any(a => a.Name.Equals(albumName)))
                         {
                             albumFound = true;
+                            Album album = registeredBands[bandName].Albums.First(a => a.Name.Equals(albumName));
                             Console.Write("Rate this album out of 10: ");
-                            Ratings rating = Ratings.Parse(Console.ReadLine()!);                            
-                            registeredBands[bandName].Albums[i].AddRating(rating);
+                            Ratings rating = Ratings.Parse(Console.ReadLine()!);
+                            album.AddRating(rating);
                             Console.WriteLine($"{rating.Rating} registered successfully to {albumName}");
                             Thread.Sleep(2000);
 
                         }
-
-                    }
+                                           
                     if (!albumFound)
                     {
                         Console.WriteLine($"{albumName} not found in {bandName}!");

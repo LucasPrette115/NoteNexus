@@ -3,20 +3,26 @@
 
 using NoteNexus.Models;
 using NoteNexus.Menus;
+using OpenAI_API;
 internal class Program
 {
     private static void Main(string[] args)
-    {
+    {    
+             
+               
+
         Dictionary<string, Band> registeredBands = new();
-        Dictionary<int, Menu> options = new();
-        options.Add(1, new RegisterBandMenu());
-        options.Add(2, new ListAllBandsMenu());
-        options.Add(3, new RateBandMenu());
-        options.Add(4, new AverageRatingMenu());
-        options.Add(5, new RegisterAlbumMenu());
-        options.Add(6, new ListAllAlbumsMenu());
-        options.Add(7, new AddMusicToAlbumMenu());     
-        options.Add(8, new RateAlbumMenu());     
+        Dictionary<int, Menu> options = new()
+        {
+            { 1, new RegisterBandMenu() },
+            { 2, new ListAllBandsMenu() },
+            { 3, new RateBandMenu() },
+            { 4, new AverageRatingMenu() },
+            { 5, new RegisterAlbumMenu() },
+            { 6, new ListAllAlbumsMenu() },
+            { 7, new AddMusicToAlbumMenu() },
+            { 8, new RateAlbumMenu() }
+        };
         
         void DisplayLogo()
         {
@@ -73,8 +79,10 @@ internal class Program
                 }
                 catch (Exception ex) { Console.Clear(); Console.WriteLine($"Invalid input: {ex.Message}"); }
             }while (true);
-        }     
+        }
         DisplayMenu();
+
+        
 
 
 

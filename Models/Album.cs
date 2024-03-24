@@ -7,10 +7,10 @@ namespace NoteNexus.Models;
 
 internal class Album : IRateable
 {
-    private List<Music>? _musics;
+    private List<Music> _musics;
 
     private List<Ratings>? _ratings;
-    public string? Name { get; set; }
+    public string Name { get; set; }
     public List<Music>? Musics { get { return _musics; } set { _musics = value; } }
     public List<Ratings>? Ratings { get { return _ratings; } set { _ratings = value; } }
     public int TotalDuration => _musics.Sum(m => m.Duration);
@@ -27,6 +27,7 @@ internal class Album : IRateable
 
     public Album() 
     {
+        
         Musics = new List<Music>();
         Ratings = new List<Ratings>();
     }
